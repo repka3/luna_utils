@@ -7,6 +7,10 @@
   },
   "author": "lunardelli alessio lunardelli.alessio@gmail.com",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/repka3/luna_utils.git"
+  },
   "devDependencies": {
     "@types/jest": "^28.1.1",
     "jest": "^28.1.1",
