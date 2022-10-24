@@ -1,5 +1,15 @@
 import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, positiveIntOrNull_castNumber } from "../src/io_utils"
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
+function generateString(length:number) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
   
   test('numero -1 deve essere null', () => {
     expect(positiveIntOrNull_castNumber(-1)).toBe(null)
@@ -81,6 +91,10 @@ import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, positiveIntOrNull_c
   })
   test('dimensione max fail', () => {
     expect(nonEmptyStringOrNull('aaaa', 2, 3)).toBe(null)
+  })
+  test('dimensione max unlimited', () => {
+    const str_to_test=generateString(10000)
+    expect(nonEmptyStringOrNull(str_to_test)).toBe(str_to_test)
   })
   //
   test('giusto', () => {

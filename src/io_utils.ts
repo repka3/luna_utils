@@ -7,7 +7,7 @@ export function positiveIntOrNull_castNumber(input: any) {
   export function nonEmptyStringOrNull(
     ss: any,
     minlength = 1,
-    maxlength = 255,
+    maxlength:number|null = null,
     allowLiteralNullInString = true
   ) {
     if (
@@ -15,7 +15,7 @@ export function positiveIntOrNull_castNumber(input: any) {
       ss === undefined ||
       typeof ss != 'string' ||
       ss.length < minlength ||
-      ss.length > maxlength
+      ( maxlength !=null && ss.length > maxlength)
     ) {
       return null
     }

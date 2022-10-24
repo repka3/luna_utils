@@ -7,12 +7,12 @@ function positiveIntOrNull_castNumber(input) {
     return +input;
 }
 exports.positiveIntOrNull_castNumber = positiveIntOrNull_castNumber;
-function nonEmptyStringOrNull(ss, minlength = 1, maxlength = 255, allowLiteralNullInString = true) {
+function nonEmptyStringOrNull(ss, minlength = 1, maxlength = null, allowLiteralNullInString = true) {
     if (ss === null ||
         ss === undefined ||
         typeof ss != 'string' ||
         ss.length < minlength ||
-        ss.length > maxlength) {
+        (maxlength != null && ss.length > maxlength)) {
         return null;
     }
     if (!allowLiteralNullInString && ss === 'null')
