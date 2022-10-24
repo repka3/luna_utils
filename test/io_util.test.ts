@@ -97,6 +97,10 @@ function generateString(length:number) {
     expect(nonEmptyStringOrNull(str_to_test)).toBe(str_to_test)
   })
   //
+  test('dimensione max unlimited', () => {
+    const str_to_test=generateString(10000)
+    expect(nonEmptyStringOrNull_caststr(str_to_test)).toBe(str_to_test)
+  })
   test('giusto', () => {
     expect(nonEmptyStringOrNull_caststr(5333, 4)).toBe('5333')
   })

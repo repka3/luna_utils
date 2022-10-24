@@ -25,14 +25,14 @@ export function positiveIntOrNull_castNumber(input: any) {
   export function nonEmptyStringOrNull_caststr(
     ss: any,
     minlength = 1,
-    maxlength = 255,
+    maxlength:number|null = null,
     allowLiteralNullInString = true
   ) {
     if (ss === null || ss === undefined) {
       return null
     }
     const stringa = '' + ss
-    if (stringa.length < minlength || stringa.length > maxlength) return null
+    if (stringa.length < minlength || ( maxlength !=null && stringa.length > maxlength)) return null
   
     if (!allowLiteralNullInString && stringa === 'null') return null
   

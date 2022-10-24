@@ -20,12 +20,12 @@ function nonEmptyStringOrNull(ss, minlength = 1, maxlength = null, allowLiteralN
     return ss;
 }
 exports.nonEmptyStringOrNull = nonEmptyStringOrNull;
-function nonEmptyStringOrNull_caststr(ss, minlength = 1, maxlength = 255, allowLiteralNullInString = true) {
+function nonEmptyStringOrNull_caststr(ss, minlength = 1, maxlength = null, allowLiteralNullInString = true) {
     if (ss === null || ss === undefined) {
         return null;
     }
     const stringa = '' + ss;
-    if (stringa.length < minlength || stringa.length > maxlength)
+    if (stringa.length < minlength || (maxlength != null && stringa.length > maxlength))
         return null;
     if (!allowLiteralNullInString && stringa === 'null')
         return null;
