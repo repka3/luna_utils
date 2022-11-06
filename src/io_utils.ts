@@ -38,4 +38,6 @@ export function positiveIntOrNull_castNumber(input: any) {
   
     return stringa
   }
-  
+  export function nullish(input: any) {
+    return input == null || input == undefined
+  }

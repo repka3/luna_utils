@@ -1,4 +1,4 @@
-import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, positiveIntOrNull_castNumber } from "../src/io_utils"
+import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, nullish, positiveIntOrNull_castNumber } from "../src/io_utils"
 const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 function generateString(length:number) {
@@ -126,3 +126,16 @@ function generateString(length:number) {
     expect(nonEmptyStringOrNull_caststr('null', 1, 4, false)).toBe(null)
   })
   
+  //test nullish
+  test('t', () => {
+    expect(nullish(null)).toBe(true)
+  })
+  test('t', () => {
+    expect(nullish(undefined)).toBe(true)
+  })
+  test('t', () => {
+    expect(nullish(1)).toBe(false)
+  })
+  test('t', () => {
+    expect(nullish(false)).toBe(false)
+  })

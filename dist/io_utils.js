@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nonEmptyStringOrNull_caststr = exports.nonEmptyStringOrNull = exports.positiveIntOrNull_castNumber = void 0;
+exports.nullish = exports.nonEmptyStringOrNull_caststr = exports.nonEmptyStringOrNull = exports.positiveIntOrNull_castNumber = void 0;
 function positiveIntOrNull_castNumber(input) {
     if (input == null || input == undefined || isNaN(+input) || +input < 1)
         return null;
@@ -32,3 +32,7 @@ function nonEmptyStringOrNull_caststr(ss, minlength = 1, maxlength = null, allow
     return stringa;
 }
 exports.nonEmptyStringOrNull_caststr = nonEmptyStringOrNull_caststr;
+function nullish(input) {
+    return input == null || input == undefined;
+}
+exports.nullish = nullish;
