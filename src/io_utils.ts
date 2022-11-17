@@ -39,5 +39,39 @@ export function positiveIntOrNull_castNumber(input: any) {
     return stringa
   }
   export function nullish(input: any) {
-    return input == null || input == undefined
+    if(input == undefined || input == null){
+      return true
+    }
+    return false
+  }
+  export function parse_body_and_trimstring_also_null_empty_string(
+    body: string
+  ): any {
+    let body_parsato = JSON.parse(body, (key, value) => {
+      if (typeof value === 'string') {
+        value = value.trim()
+        if (value.length == 0) {
+          return null
+        }
+        return value
+      }
+      return value
+    })
+    return body_parsato
+  }
+
+  export function validPassword(password: string,minlength=10,maxlength=30,preventwhitespaces=true,special_chars=true,uppercase=true,lowercase=true,numbers=true) {
+   
+    if (password.length < minlength ) return false
+    if (password.length > maxlength ) return false
+    if (preventwhitespaces && password.includes(' ')) return false
+    //at least 1 number
+    if (numbers && !/\d/.test(password)) return false
+    //at least 1 lowercase
+    if (lowercase && !/[a-z]/.test(password)) return false
+    //at least 1 uppercase
+    if (uppercase && !/[A-Z]/.test(password)) return false
+    //at least 1 special character
+    if (special_chars && !/[!@#$%^&*(),.?":{}|<>]/.test(password)) return false
+    return true
   }

@@ -1,4 +1,4 @@
-import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, nullish, positiveIntOrNull_castNumber } from "../src/io_utils"
+import { nonEmptyStringOrNull, nonEmptyStringOrNull_caststr, nullish, positiveIntOrNull_castNumber, validPassword } from "../src/io_utils"
 const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 function generateString(length:number) {
@@ -139,3 +139,51 @@ function generateString(length:number) {
   test('t', () => {
     expect(nullish(false)).toBe(false)
   })
+test('t', () => {
+  expect(validPassword('')).toBe(false)
+})
+test('t', () => {
+  expect(validPassword('asdfghjk')).toBe(false)
+})
+test('t', () => {
+  expect(validPassword('Bl.!00aa11')).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl.!bbaa')).toBe(false)
+})
+test('t', () => {
+  expect(validPassword('Bl.!0ba',7)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl.!0bak',7,7)).toBe(false)
+})
+test('t', () => {
+  expect(validPassword('Bl.!0bak',7,8)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl.!0bak11',8,30)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl0bak11!',8,30,true)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl0!bak11 ',8,30,true)).toBe(false)
+})
+test('t', () => {
+  expect(validPassword('Bl0ba!k11 ',8,30,false)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('Bl0bak11',8,30,true,false)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('bl0bak11',8,30,true,false,false)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('bl0bAk11',8,30,true,false,true)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('BL0AAA11',8,30,true,false,true,false)).toBe(true)
+})
+test('t', () => {
+  expect(validPassword('BL0AAA11',8,30,true,false,true,true)).toBe(false)
+})

@@ -1,6 +1,6 @@
 {
   "name": "luna-ts-utils",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "description": "Typescript General utils (like parse input BE/FE), frontend cache",
   "scripts": {
     "test": "tsc && jest"
